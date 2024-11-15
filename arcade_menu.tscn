@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=4 uid="uid://blkjaravebmrg"]
+
+[ext_resource type="TileSet" uid="uid://0rwjsil1qg8" path="res://forest tile set.tres" id="1_xqb2j"]
+[ext_resource type="LabelSettings" uid="uid://0yw3k7d3d6iv" path="res://menu_title_settings.tres" id="2_d86eg"]
+
+[node name="ArcadeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(480, 480)
+autoscroll = Vector2(-100, -20)
+repeat_times = 20
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Background/Parallax2D"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAUAAAAAAAEAAAABAAYAAAABAAAAAAACAAUAAAABAAEAAAACAAYAAAAAAAIAAAABAAUAAAAAAAMAAAABAAYAAAABAAIAAAACAAUAAAABAAMAAAACAAYAAAAAAAQAAAAJAAYAAAAAAAUAAAAIAAYAAAABAAQAAAACAAUAAAABAAUAAAACAAYAAAAAAAYAAAABAAUAAAAAAAcAAAABAAYAAAABAAYAAAACAAUAAAABAAcAAAACAAYAAAAAAAgAAAABAAUAAAAAAAkAAAABAAYAAAABAAgAAAACAAUAAAABAAkAAAACAAYAAAACAAAAAAABAAUAAAACAAEAAAAJAAUAAAADAAAAAAACAAUAAAADAAEAAAACAAYAAAACAAIAAAABAAUAAAACAAMAAAABAAYAAAADAAIAAAACAAUAAAADAAMAAAACAAYAAAACAAQAAAABAAUAAAACAAUAAAABAAYAAAADAAQAAAACAAUAAAADAAUAAAACAAYAAAACAAYAAAABAAUAAAACAAcAAAAIAAYAAAADAAYAAAACAAUAAAADAAcAAAACAAYAAAACAAgAAAABAAUAAAACAAkAAAABAAYAAAADAAgAAAACAAUAAAADAAkAAAACAAYAAAAEAAAAAAABAAUAAAAEAAEAAAABAAYAAAAFAAAAAAACAAUAAAAFAAEAAAACAAYAAAAEAAIAAAAJAAUAAAAEAAMAAAABAAYAAAAFAAIAAAACAAUAAAAFAAMAAAACAAYAAAAEAAQAAAABAAUAAAAEAAUAAAAJAAYAAAAFAAQAAAACAAUAAAAFAAUAAAAKAAYAAAAEAAYAAAABAAUAAAAEAAcAAAABAAYAAAAFAAYAAAAJAAYAAAAFAAcAAAACAAYAAAAEAAgAAAABAAUAAAAEAAkAAAACAAUAAAAFAAgAAAACAAUAAAAFAAkAAAACAAYAAAAGAAAAAAABAAUAAAAGAAEAAAABAAYAAAAHAAAAAAACAAUAAAAHAAEAAAACAAYAAAAGAAIAAAAKAAUAAAAGAAMAAAABAAYAAAAHAAIAAAACAAUAAAAHAAMAAAACAAYAAAAGAAQAAAABAAUAAAAGAAUAAAAKAAYAAAAHAAQAAAACAAUAAAAHAAUAAAACAAYAAAAGAAYAAAABAAUAAAAGAAcAAAABAAYAAAAHAAYAAAACAAUAAAAHAAcAAAACAAYAAAAGAAgAAAABAAUAAAAGAAkAAAABAAYAAAAHAAgAAAACAAUAAAAHAAkAAAACAAYAAAAIAAAAAAABAAUAAAAIAAEAAAABAAYAAAAJAAAAAAACAAUAAAAJAAEAAAACAAYAAAAIAAIAAAABAAUAAAAIAAMAAAABAAYAAAAJAAIAAAACAAUAAAAJAAMAAAACAAYAAAAIAAQAAAABAAUAAAAIAAUAAAABAAYAAAAJAAQAAAACAAUAAAAJAAUAAAACAAYAAAAIAAYAAAABAAUAAAAIAAcAAAABAAYAAAAJAAYAAAACAAUAAAAJAAcAAAACAAYAAAAIAAgAAAABAAUAAAAIAAkAAAABAAYAAAAJAAgAAAACAAUAAAAJAAkAAAACAAYAAAD+/wkAAAAIAAMAAAA=")
+tile_set = ExtResource("1_xqb2j")
+
+[node name="UI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+
+[node name="LSpacer" type="Control" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuTitle" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Choose a Game"
+label_settings = ExtResource("2_d86eg")
+
+[node name="GameSelect" type="GridContainer" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="StartPacMan" type="Button" parent="UI/HBoxContainer/VBoxContainer/GameSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Pac-Man"
+
+[node name="StartBreakout" type="Button" parent="UI/HBoxContainer/VBoxContainer/GameSelect"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Breakout"
+
+[node name="BSpacer" type="Container" parent="UI/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="RSpacer" type="Control" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+size_flags_horizontal = 8

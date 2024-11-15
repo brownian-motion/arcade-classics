@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqywn3kktpi4m"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_oe1xy"]
+[ext_resource type="PackedScene" uid="uid://ddho0v7jo6s65" path="res://main_menu_background.tscn" id="2_jle7o"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_oe1xy")
+
+[node name="MainMenuBackground" parent="." instance=ExtResource("2_jle7o")]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="HUD"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Click Me"

@@ -8,7 +8,7 @@ const RIGHT_WALL_X = BLOCK_SIZE*13
 
 const BASE_PADDLE_VELOCITY = 4 * BLOCK_SIZE
 const BASE_BALL_VELOCITY = 5 * BLOCK_SIZE
-const BALL_BOUNCE_ACCELERATION_SCALE = 1.1
+const BALL_BOUNCE_ACCELERATION_SCALE = 1.05
 const MAX_BALL_SPEED = 20 * BLOCK_SIZE
 
 const KICK_DELAY_SEC = 3 # seconds
@@ -18,6 +18,7 @@ var paddle
 var walls
 var death_wall
 var ball_spawn_point
+var bricks
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,7 @@ func _ready() -> void:
 	walls = $Game/Foreground/Walls
 	death_wall = $Game/Foreground/DeathWall
 	ball_spawn_point = $Game/Foreground/BallSpawnPoint
+	bricks = $Game/Foreground/Bricks
 	
 	ball.get_child(0).play()
 	paddle.get_child(0).play()
@@ -44,16 +46,17 @@ func _physics_process(delta: float) -> void:
 	var collision = ball.move_and_collide(ball.velocity * delta)
 	if collision:
 		var collider = collision.get_collider()
-		for wall in walls.get_children():
-			if collider == wall:
-				bounce_ball(collision)
-				return
+		if walls.is_ancestor_of(collider):
+			bounce_ball(collision)
 				
 		if collider == paddle:
 			bounce_ball(collision)
 			
 		if collider == death_wall:
 			reset_ball()
+			
+		if bricks == collider:
+			collide_brick(collision)
 			
 	paddle.move_and_collide(paddle.velocity * delta)
 
@@ -86,5 +89,11 @@ func reset_ball() -> void:
 		self.kick_ball()
 		ball.remove_child(kick_timer)
 	kick_timer.connect("timeout", timeout_lambda)
-	
-	pass
+
+func collide_brick(collision: KinematicCollision2D) -> void:
+	print("brick hit")
+	bounce_ball(collision)
+	var pos = collision.get_position()
+	var cell_coords = bricks.local_to_map(bricks.to_local(pos))
+	print(cell_coords)
+	bricks.erase_cell(cell_coords)

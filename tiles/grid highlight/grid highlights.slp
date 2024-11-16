@@ -1,0 +1,67 @@
+{
+    "project": {
+        "animationPlayback": {
+            "fps": 4,
+            "frameCount": 2,
+            "frameHeight": 48,
+            "frameWidth": 48,
+            "frameX": 0,
+            "frameY": 0,
+            "loop": true,
+            "scale": 6.43
+        },
+        "creationVersion": "0.9.0",
+        "currentLayerIndex": 0,
+        "guides": [
+        ],
+        "hasUsedAnimation": true,
+        "layers": [
+            {
+                "imageData": "iVBORw0KGgoAAAANSUhEUgAAAGAAAAAwCAYAAADuFn/PAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2UlEQVR4nO3cuw2DQBQF0QeytKXQFRVsB47pgOZcCpkjpOWTYEsenjwnguyKEZtBFxHPSKyWMtIbvtHTA/7dY3c/ISuuO31r52UZfj3kE7WU13rdvgFZHn7EydYsDz9iu9UjCGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZANYGyPTTjsPW9vP/u2u37v8VkSnCQaYIK48g2BtGnBKF04xZtgAAAABJRU5ErkJggg==",
+                "name": "Layer 1",
+                "opacity": 1,
+                "visible": true
+            }
+        ],
+        "modificationVersion": "0.9.0",
+        "notes": [
+        ],
+        "swatch": {
+            "colours": [
+                {
+                    "colour": "#7b000000",
+                    "name": ""
+                },
+                {
+                    "colour": "#d96c0606",
+                    "name": ""
+                }
+            ]
+        },
+        "uiState": {
+            "animationPanelExpanded": true,
+            "colourPanelExpanded": true,
+            "firstPane": {
+                "offsetX": 669,
+                "offsetY": 516,
+                "sceneCentered": false,
+                "size": 1,
+                "zoomLevel": 11
+            },
+            "lastFillToolUsed": "FillTool",
+            "layerListViewContentY": 0,
+            "layerPanelExpanded": true,
+            "mainSplitViewState": "gqJlaW5kZXgAbnByZWZlcnJlZFdpZHRo+0CKqqqqqqqromVpbmRleAFucHJlZmVycmVkV2lkdGj7QHkAAAAAAAA=",
+            "panelSplitViewState": "gqJlaW5kZXgBb3ByZWZlcnJlZEhlaWdodPtAbIAAAAAAAKJlaW5kZXgEb3ByZWZlcnJlZEhlaWdodPtAfHAAAAAAAA==",
+            "secondPane": {
+                "offsetX": -48,
+                "offsetY": 633,
+                "sceneCentered": true,
+                "size": 0,
+                "zoomLevel": 1
+            },
+            "swatchPanelExpanded": true
+        },
+        "usingAnimation": true
+    }
+}

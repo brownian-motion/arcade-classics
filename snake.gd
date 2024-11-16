@@ -24,7 +24,7 @@ var VALID_FLOWERS = [Vector2i(8,6), Vector2i(9,6), Vector2i(10,6), Vector2i(10,5
 
 const BLOCK_SIZE = 48 # px
 const BASE_SNAKE_SPEED = 2*BLOCK_SIZE # px/s
-const SPEED_PER_LENGTH = BASE_SNAKE_SPEED/3 # px/s
+const SPEED_PER_LENGTH = BASE_SNAKE_SPEED/4 # px/s per section
 var snake_speed = BASE_SNAKE_SPEED
 
 var direction: Vector2i = Vector2i.ZERO
@@ -194,10 +194,13 @@ func kill_snake() -> void:
 	reset_snake()
 
 func generate_food() -> void:
-	var r = randi_range(TOP_VALID_ROW, BOTTOM_VALID_ROW)
-	var c = randi_range(LEFT_VALID_COL, RIGHT_VALID_COL)
+	var target
+	while !target or has_flower(target):
+		var r = randi_range(TOP_VALID_ROW, BOTTOM_VALID_ROW)
+		var c = randi_range(LEFT_VALID_COL, RIGHT_VALID_COL)
+		target = Vector2i(c,r)
 	
-	food.set_cell(Vector2i(c,r), 0, Vector2i(10,2 + randi() % 2))
+	food.set_cell(target, 0, Vector2i(10,2 + randi() % 2))
 	
 func get_snake_piece_velocity(piece: CharacterBody2D, target_cell: Vector2i) -> Vector2:
 	var target_cell_center = center_of_tile(target_cell)
@@ -217,6 +220,8 @@ func get_head_target_cell() -> Vector2i:
 	var head_tile = global_to_tile(head.position)
 	return head_tile + direction	
 
+
+# we should queue button presses tbh
 func get_head_target_vel(input_dir: Vector2) -> Vector2i:
 	if snake.get_child_count() == 0:
 		return Vector2i.ZERO
@@ -243,10 +248,12 @@ func plant_flower(cell_coord: Vector2i) -> void:
 func update_grass(cell_coord: Vector2i) -> void:
 	if cell_coord.y < TOP_VALID_ROW || cell_coord.y > BOTTOM_VALID_ROW || cell_coord.x < LEFT_VALID_COL || cell_coord.x > RIGHT_VALID_COL:
 		return
+	if has_flower(cell_coord):
+		return
 	var needs_above = (cell_coord.y == TOP_VALID_ROW) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_TOP_SIDE))
 	var needs_left = (cell_coord.x == LEFT_VALID_COL) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_LEFT_SIDE))
-	var needs_right = (cell_coord.y == BOTTOM_VALID_ROW) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
-	var needs_below = (cell_coord.x == RIGHT_VALID_COL) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_RIGHT_SIDE))
+	var needs_below = (cell_coord.y == BOTTOM_VALID_ROW) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	var needs_right = (cell_coord.x == RIGHT_VALID_COL) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_RIGHT_SIDE))
 	
 	var idx = (8 if needs_left else 0) + (4 if needs_above else 0) + (2 if needs_right else 0) + (1 if needs_below else 0)
 	

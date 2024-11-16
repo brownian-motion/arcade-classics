@@ -2,7 +2,7 @@
     "project": {
         "animationPlayback": {
             "fps": 4,
-            "frameCount": 2,
+            "frameCount": 3,
             "frameHeight": 48,
             "frameWidth": 48,
             "frameX": 0,
@@ -10,14 +10,15 @@
             "loop": true,
             "scale": 6.43
         },
-        "creationVersion": "0.9.0",
+        "autoExportEnabled": true,
+        "creationVersion": "",
         "currentLayerIndex": 0,
         "guides": [
         ],
         "hasUsedAnimation": true,
         "layers": [
             {
-                "imageData": "iVBORw0KGgoAAAANSUhEUgAAAGAAAAAwCAYAAADuFn/PAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2UlEQVR4nO3cuw2DQBQF0QeytKXQFRVsB47pgOZcCpkjpOWTYEsenjwnguyKEZtBFxHPSKyWMtIbvtHTA/7dY3c/ISuuO31r52UZfj3kE7WU13rdvgFZHn7EydYsDz9iu9UjCGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZAGYAmAFgBoAZANYGyPTTjsPW9vP/u2u37v8VkSnCQaYIK48g2BtGnBKF04xZtgAAAABJRU5ErkJggg==",
+                "imageData": "iVBORw0KGgoAAAANSUhEUgAAAJAAAAAwCAYAAAD+WvNWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABxElEQVR4nO3dQU7CQBSH8Vdi4CZ2547bGDdsuYFrbuCWk3gETsBV2NSNkDpOW5v/TKfz/H5LqM9J+qVEKUxjZu9WseNu9zb7h7ou/njTjB8/9Lzg8+X1OfnQBT2VXkARU6HEju+64efHZjoXBnQqsor54lfNsROs+MvcOb97ILbr5ZykwnZ/+LWYVLPD+Zve47XEYxZba654coisNeUJDmelnB3Oc/cS9nG7teqM43Z7zTF3aHYO18u5afeHLnU8oc30IfVIdZLDOanmpp41JXc8Zs4CSul+opc84TUioBHEM42AICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEgICBICgoSAICGglYjdhrpWQ7e0orAaIgrXSEClZL4vOpdwjQS0EjXEc9dfKwFBQkCQEBAkPgKq6UOFzvgI6J9+Ln0NfASEYnwExEtYMT4CqvElrMY1R/gICMUQECQEBAkBQeIjIP4KK8ZHQCiGgCAhIEgICBICgoSAIHEV0FLfwaxYco1LfMqjsZ/bBtTybfWPNT82W6ntf0Hfb6b2N1vJtR1B6hv2+7PDb6qvd+ee/rvbc3fjWYlcV4ycVyJ3Wx2Y2epD8eQLOI59lZq4rGkAAAAASUVORK5CYII=",
                 "name": "Layer 1",
                 "opacity": 1,
                 "visible": true
@@ -35,6 +36,10 @@
                 {
                     "colour": "#d96c0606",
                     "name": ""
+                },
+                {
+                    "colour": "#ff263462",
+                    "name": ""
                 }
             ]
         },
@@ -42,11 +47,11 @@
             "animationPanelExpanded": true,
             "colourPanelExpanded": true,
             "firstPane": {
-                "offsetX": 669,
-                "offsetY": 516,
+                "offsetX": -696,
+                "offsetY": 60,
                 "sceneCentered": false,
                 "size": 1,
-                "zoomLevel": 11
+                "zoomLevel": 18
             },
             "lastFillToolUsed": "FillTool",
             "layerListViewContentY": 0,

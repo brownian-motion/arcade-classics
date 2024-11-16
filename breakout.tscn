@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://rl5jyjuad7dd"]
+[gd_scene load_steps=25 format=4 uid="uid://rl5jyjuad7dd"]
 
 [ext_resource type="TileSet" uid="uid://0rwjsil1qg8" path="res://forest tile set.tres" id="1_k1hqp"]
 [ext_resource type="Script" path="res://breakout.gd" id="1_soqjy"]
@@ -186,8 +186,9 @@ sources/0 = SubResource("TileSetAtlasSource_ye2sq")
 sources/1 = SubResource("TileSetAtlasSource_ftmgl")
 sources/2 = SubResource("TileSetAtlasSource_msl54")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6ktp"]
-size = Vector2(192, 24)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxr13"]
+radius = 12.0
+height = 196.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fv20a"]
 atlas = ExtResource("5_vke4q")
@@ -243,13 +244,16 @@ animations = [{
 radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rhur"]
-size = Vector2(96, 720)
+size = Vector2(720, 720)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wv06t"]
-size = Vector2(720, 48)
+size = Vector2(720, 720)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfkjb"]
+radius = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l5x1"]
-size = Vector2(600, 200)
+size = Vector2(600, 720)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -293,10 +297,11 @@ collision_layer = 3
 
 [node name="PaddleSprite" type="AnimatedSprite2D" parent="Game/Foreground/Paddle"]
 sprite_frames = ExtResource("6_6psot")
-frame_progress = 0.365893
+frame_progress = 0.342247
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Paddle"]
-shape = SubResource("RectangleShape2D_n6ktp")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bxr13")
 
 [node name="Ball" type="CharacterBody2D" parent="Game/Foreground"]
 position = Vector2(380, 459)
@@ -307,7 +312,7 @@ collision_priority = 2.0
 
 [node name="BallSprite" type="AnimatedSprite2D" parent="Game/Foreground/Ball"]
 sprite_frames = SubResource("SpriteFrames_w76ja")
-frame_progress = 0.608646
+frame_progress = 0.0490578
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Ball"]
 shape = SubResource("CircleShape2D_7eyox")
@@ -320,7 +325,7 @@ collision_layer = 3
 collision_mask = 0
 
 [node name="LeftWallShape" type="CollisionShape2D" parent="Game/Foreground/Walls/LeftWall"]
-position = Vector2(72, 360)
+position = Vector2(-230, 360)
 shape = SubResource("RectangleShape2D_1rhur")
 
 [node name="RightWall" type="StaticBody2D" parent="Game/Foreground/Walls"]
@@ -329,24 +334,41 @@ collision_layer = 3
 collision_mask = 0
 
 [node name="RightWallShape" type="CollisionShape2D" parent="Game/Foreground/Walls/RightWall"]
-position = Vector2(695, 361)
+position = Vector2(1000, 361)
 shape = SubResource("RectangleShape2D_1rhur")
 
 [node name="TopWall" type="StaticBody2D" parent="Game/Foreground/Walls"]
+position = Vector2(0, -1)
 disable_mode = 1
 collision_layer = 3
 collision_mask = 0
 
 [node name="TopWallShape" type="CollisionShape2D" parent="Game/Foreground/Walls/TopWall"]
-position = Vector2(396, 96)
+position = Vector2(396, -230)
 shape = SubResource("RectangleShape2D_wv06t")
+
+[node name="TopLeftWall" type="StaticBody2D" parent="Game/Foreground/Walls"]
+position = Vector2(131, 130)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Walls/TopLeftWall"]
+shape = SubResource("CircleShape2D_lfkjb")
+
+[node name="TopRightWall" type="StaticBody2D" parent="Game/Foreground/Walls"]
+position = Vector2(635, 130)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Walls/TopRightWall"]
+shape = SubResource("CircleShape2D_lfkjb")
 
 [node name="DeathWall" type="StaticBody2D" parent="Game/Foreground"]
 collision_layer = 3
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/DeathWall"]
-position = Vector2(360, 650)
+position = Vector2(360, 930)
 shape = SubResource("RectangleShape2D_5l5x1")
 
 [node name="BallSpawnPoint" type="Marker2D" parent="Game/Foreground"]

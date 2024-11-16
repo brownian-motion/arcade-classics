@@ -7,8 +7,8 @@ const LEFT_WALL_X = BLOCK_SIZE*3
 const RIGHT_WALL_X = BLOCK_SIZE*13
 
 const BASE_PADDLE_VELOCITY = 4 * BLOCK_SIZE
-const BASE_BALL_VELOCITY = 4 * BLOCK_SIZE
-const BALL_BOUNCE_ACCELERATION_SCALE = 1.2
+const BASE_BALL_VELOCITY = 5 * BLOCK_SIZE
+const BALL_BOUNCE_ACCELERATION_SCALE = 1.1
 const MAX_BALL_SPEED = 20 * BLOCK_SIZE
 
 const KICK_DELAY_SEC = 3 # seconds
@@ -26,6 +26,9 @@ func _ready() -> void:
 	walls = $Game/Foreground/Walls
 	death_wall = $Game/Foreground/DeathWall
 	ball_spawn_point = $Game/Foreground/BallSpawnPoint
+	
+	ball.get_child(0).play()
+	paddle.get_child(0).play()
 	
 	reset_ball()
 
@@ -52,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		if collider == death_wall:
 			reset_ball()
 			
-	paddle.move_and_slide()
+	paddle.move_and_collide(paddle.velocity * delta)
 
 func _unhandled_input(event) -> void:
 	paddle.velocity.x = BASE_PADDLE_VELOCITY * (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))
@@ -66,6 +69,7 @@ func bounce_ball(collision: KinematicCollision2D) -> void:
 	var normal = collision.get_normal().normalized()
 	var dot = abs(normal.dot(ball.velocity))
 	ball.velocity += normal * dot * (1 + BALL_BOUNCE_ACCELERATION_SCALE) # speed up in the reflected direction only
+	ball.velocity += collision.get_collider_velocity()
 	if ball.velocity.length() > MAX_BALL_SPEED:
 		ball.velocity = ball.velocity.normalized() * MAX_BALL_SPEED
 

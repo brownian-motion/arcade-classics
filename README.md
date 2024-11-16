@@ -8,4 +8,4 @@ Everything in here is free to use for personal use, though not permitted to modi
 
 Take a look at the current state of the project:
 
-![thumbnail video](https://github.com/brownian-motion/arcade-classics/raw/refs/heads/main/thumbnail.avi)
+![thumbnail video](https://github.com/brownian-motion/arcade-classics/raw/refs/heads/main/thumbnail.gif)

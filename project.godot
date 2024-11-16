@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1080
 window/size/viewport_height=720
 
+[editor]
+
+movie_writer/movie_file="/home/jj/Documents/repos/godot/arcade-classics/thumbnail.avi"
+movie_writer/fps=20
+
 [input]
 
 ui_accept={

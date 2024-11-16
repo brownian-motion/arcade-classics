@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://blkjaravebmrg"]
+[gd_scene load_steps=5 format=4 uid="uid://blkjaravebmrg"]
 
+[ext_resource type="Theme" uid="uid://b35fwn6f6n25j" path="res://hud_theme.tres" id="1_c55bo"]
 [ext_resource type="Script" path="res://arcade_menu.gd" id="1_qsrpo"]
 [ext_resource type="TileSet" uid="uid://0rwjsil1qg8" path="res://forest tile set.tres" id="1_xqb2j"]
 [ext_resource type="LabelSettings" uid="uid://0yw3k7d3d6iv" path="res://menu_title_settings.tres" id="2_d86eg"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_c55bo")
 script = ExtResource("1_qsrpo")
 
 [node name="Background" type="Node2D" parent="."]

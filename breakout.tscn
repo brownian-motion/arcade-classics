@@ -317,7 +317,6 @@ collision_enabled = false
 navigation_enabled = false
 
 [node name="Foreground" type="Node2D" parent="Game"]
-visible = false
 
 [node name="Bricks" type="TileMapLayer" parent="Game/Foreground"]
 texture_filter = 5
@@ -333,7 +332,7 @@ collision_layer = 3
 
 [node name="PaddleSprite" type="AnimatedSprite2D" parent="Game/Foreground/Paddle"]
 sprite_frames = ExtResource("6_6psot")
-frame_progress = 0.454998
+frame_progress = 0.27311
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Paddle"]
 rotation = 1.5708
@@ -348,7 +347,7 @@ collision_priority = 2.0
 
 [node name="BallSprite" type="AnimatedSprite2D" parent="Game/Foreground/Ball"]
 sprite_frames = SubResource("SpriteFrames_w76ja")
-frame_progress = 0.329696
+frame_progress = 0.374972
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Ball"]
 shape = SubResource("CircleShape2D_7eyox")

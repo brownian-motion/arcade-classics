@@ -6,6 +6,11 @@ const TOP_WALL_Y = BLOCK_SIZE*3
 const LEFT_WALL_X = BLOCK_SIZE*3
 const RIGHT_WALL_X = BLOCK_SIZE*13
 
+const SKULL_WALL_LOWEST_ROW = 11
+const SKULL_WALL_HIGHEST_ROW = 5
+const SKULL_WALL_LEFT_COL = 17
+const SKULL_WALL_RIGHT_COL = 19
+
 const BASE_PADDLE_VELOCITY = 4 * BLOCK_SIZE
 const BASE_BALL_VELOCITY = 5 * BLOCK_SIZE
 const BALL_BOUNCE_ACCELERATION_SCALE = 0.05
@@ -36,6 +41,7 @@ func _ready() -> void:
 	paddle.get_child(0).play()
 	
 	reset_ball()
+	update_hud()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -57,8 +63,7 @@ func _physics_process(delta: float) -> void:
 			
 		if collider == death_wall:
 			reset_ball()
-			num_deaths += 1
-			update_hud()
+			add_death()
 			
 		if bricks == collider:
 			collide_brick(collision)
@@ -75,6 +80,7 @@ func kick_ball() -> void:
 func bounce_ball(collision: KinematicCollision2D) -> void:
 	print("bounce")
 	var normal = collision.get_normal().normalized()
+	normal = normal.rotated(randf_range(- PI/16, PI/16))
 	var dot = abs(normal.dot(ball.velocity))
 	ball.velocity += normal * dot * (2 + BALL_BOUNCE_ACCELERATION_SCALE * level) # speed up in the reflected direction only
 	ball.velocity += collision.get_collider_velocity()
@@ -104,7 +110,13 @@ func collide_brick(collision: KinematicCollision2D) -> void:
 	bricks.erase_cell(cell_coords)
 
 func update_hud() -> void:
-	$HUD/DeathCount.text = String.num_uint64(num_deaths)
 	$HUD/LevelCount.text = String.num_uint64(level)
 	
-	
+func add_death() -> void:
+	num_deaths += 1
+	update_hud()
+	var r = ((num_deaths - 1)/3) % (SKULL_WALL_LOWEST_ROW - SKULL_WALL_HIGHEST_ROW + 1) + SKULL_WALL_HIGHEST_ROW
+	var c = (num_deaths - 1)%3 + SKULL_WALL_LEFT_COL
+	var VALID_TILES = [Vector2i(2,3), Vector2i(2,4), Vector2i(7,4), Vector2i(2,2)]
+	var tile_id = VALID_TILES[randi_range(0, VALID_TILES.size() - 1)]
+	$HUD/Skulls.set_cell(Vector2(c, r), 0, tile_id)

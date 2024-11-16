@@ -1,7 +1,6 @@
 extends Control
 
 signal continue_chosen()
-signal quit_chosen()
 
 func show_menu() -> void:
 	print("showing pause menu")
@@ -24,3 +23,8 @@ func unpause() -> void:
 	get_tree().paused = false
 	self.hide_menu()
 	self.continue_chosen.emit()
+
+func goto_main_menu() -> void:
+	var scene = load("res://arcade_menu.tscn")
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(scene)

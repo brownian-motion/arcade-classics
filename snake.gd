@@ -71,11 +71,16 @@ func make_follower() -> Node2D:
 
 func _unhandled_input(event: InputEvent) -> void:
 	var new_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down", 1)
-	if new_dir.length() < 0.5:
+	if new_dir.length() >= 0.5:
+		direction = new_dir.normalized() * snake_speed
+		if snake.get_child_count() > 0:
+			snake.get_child(0).velocity = direction
+	if event.is_action_released("pause_toggle"):
+		print("pausing")
+		$PauseModal.show_menu()
+		get_tree().paused = true
+		get_viewport().set_input_as_handled()
 		return
-	direction = new_dir.normalized() * snake_speed
-	if snake.get_child_count() > 0:
-		snake.get_child(0).velocity = direction
 
 func _physics_process(delta: float) -> void:
 	move_snake(delta)

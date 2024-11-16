@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://cq5ej7a575pts"]
+[gd_scene load_steps=7 format=4 uid="uid://cq5ej7a575pts"]
 
 [ext_resource type="Script" path="res://snake.gd" id="1_cki1h"]
 [ext_resource type="TileSet" uid="uid://0rwjsil1qg8" path="res://forest tile set.tres" id="1_vdndo"]
 [ext_resource type="TileSet" uid="uid://crqhlpll8do0v" path="res://tiles/dungeon_items.tres" id="2_ioxok"]
 [ext_resource type="PackedScene" uid="uid://d2g8c8vd4on3r" path="res://sprites/walky_guy.tscn" id="4_m1wmf"]
 [ext_resource type="PackedScene" uid="uid://bo2yy1bib2wck" path="res://sprites/flaming skull/skull.tscn" id="5_3nbu2"]
+[ext_resource type="PackedScene" uid="uid://bq4rnmqxp5eim" path="res://default_pause_menu.tscn" id="6_04wxa"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_cki1h")
@@ -42,3 +43,6 @@ position = Vector2(552, 506)
 [node name="Walls" type="Node2D" parent="Game"]
 
 [node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PauseModal" parent="." instance=ExtResource("6_04wxa")]
+visible = false

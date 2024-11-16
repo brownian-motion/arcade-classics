@@ -44,4 +44,7 @@ text = "Continue"
 
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2
-text = "Quit Game"
+text = "Main Menu"
+
+[connection signal="pressed" from="Buttons/Continue" to="." method="unpause"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="goto_main_menu"]

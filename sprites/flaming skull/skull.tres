@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b8xbq21k218sk"]
+
+[ext_resource type="Texture2D" uid="uid://cwjb3bh6n3vah" path="res://sprites/flaming skull/flaming_skull.png" id="1_5vf7w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd3p7"]
+atlas = ExtResource("1_5vf7w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isk4i"]
+atlas = ExtResource("1_5vf7w")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lcg8"]
+atlas = ExtResource("1_5vf7w")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd3p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isk4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lcg8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]

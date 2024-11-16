@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2g8c8vd4on3r"]
+
+[ext_resource type="Texture2D" uid="uid://c04cf3cauy22j" path="res://sprites/Run_Animation.png" id="1_7617x"]
+[ext_resource type="Script" path="res://sprites/snake_piece.gd" id="2_v1j80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgeib"]
+atlas = ExtResource("1_7617x")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxyk2"]
+atlas = ExtResource("1_7617x")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ele3c"]
+atlas = ExtResource("1_7617x")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcop0"]
+atlas = ExtResource("1_7617x")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qcjn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgeib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxyk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ele3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcop0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ev8kn"]
+radius = 22.0
+
+[node name="WalkyGuy" type="CharacterBody2D"]
+texture_filter = 5
+position = Vector2(543, 574)
+script = ExtResource("2_v1j80")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_0qcjn")
+frame_progress = 0.059514
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ev8kn")

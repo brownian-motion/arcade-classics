@@ -3,6 +3,7 @@ extends Control
 const games = [
 	{"id": "StartPacMan", "res": "res://pacman.tscn", "label_en": "Pac-Man"},
 	{"id": "StartBreakout", "res": "res://breakout.tscn", "label_en": "Breakout"},
+	{"id": "StartSnake", "res": "res://snake.tscn", "label_en": "Fruit Getter"},
 ]
 
 # Called when the node enters the scene tree for the first time.

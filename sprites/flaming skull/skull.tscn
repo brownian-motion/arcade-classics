@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo2yy1bib2wck"]
+
+[ext_resource type="SpriteFrames" uid="uid://b8xbq21k218sk" path="res://sprites/flaming skull/skull.tres" id="1_k2t71"]
+[ext_resource type="Script" path="res://sprites/snake_piece.gd" id="2_q4d1x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypm3a"]
+radius = 22.0
+
+[node name="Skull" type="CharacterBody2D"]
+texture_filter = 5
+script = ExtResource("2_q4d1x")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_k2t71")
+frame_progress = 0.890227
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ypm3a")

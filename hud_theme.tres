@@ -1,3 +1,6 @@
-[gd_resource type="Theme" format=3 uid="uid://b35fwn6f6n25j"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b35fwn6f6n25j"]
+
+[ext_resource type="FontFile" uid="uid://cay2stf73ereo" path="res://fonts/tinypixel.otf" id="1_jaijr"]
 
 [resource]
+default_font = ExtResource("1_jaijr")

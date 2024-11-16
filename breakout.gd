@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 const BLOCK_SIZE = 48 # px
 
@@ -8,7 +8,7 @@ const RIGHT_WALL_X = BLOCK_SIZE*13
 
 const BASE_PADDLE_VELOCITY = 4 * BLOCK_SIZE
 const BASE_BALL_VELOCITY = 5 * BLOCK_SIZE
-const BALL_BOUNCE_ACCELERATION_SCALE = 1.05
+const BALL_BOUNCE_ACCELERATION_SCALE = 0.05
 const MAX_BALL_SPEED = 20 * BLOCK_SIZE
 
 const KICK_DELAY_SEC = 3 # seconds
@@ -19,6 +19,9 @@ var walls
 var death_wall
 var ball_spawn_point
 var bricks
+
+var num_deaths: int = 0
+var level: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,6 +57,8 @@ func _physics_process(delta: float) -> void:
 			
 		if collider == death_wall:
 			reset_ball()
+			num_deaths += 1
+			update_hud()
 			
 		if bricks == collider:
 			collide_brick(collision)
@@ -71,7 +76,7 @@ func bounce_ball(collision: KinematicCollision2D) -> void:
 	print("bounce")
 	var normal = collision.get_normal().normalized()
 	var dot = abs(normal.dot(ball.velocity))
-	ball.velocity += normal * dot * (1 + BALL_BOUNCE_ACCELERATION_SCALE) # speed up in the reflected direction only
+	ball.velocity += normal * dot * (2 + BALL_BOUNCE_ACCELERATION_SCALE * level) # speed up in the reflected direction only
 	ball.velocity += collision.get_collider_velocity()
 	if ball.velocity.length() > MAX_BALL_SPEED:
 		ball.velocity = ball.velocity.normalized() * MAX_BALL_SPEED
@@ -97,3 +102,9 @@ func collide_brick(collision: KinematicCollision2D) -> void:
 	var cell_coords = bricks.local_to_map(bricks.to_local(pos))
 	print(cell_coords)
 	bricks.erase_cell(cell_coords)
+
+func update_hud() -> void:
+	$HUD/DeathCount.text = String.num_uint64(num_deaths)
+	$HUD/LevelCount.text = String.num_uint64(level)
+	
+	

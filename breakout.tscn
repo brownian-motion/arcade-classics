@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://rl5jyjuad7dd"]
+[gd_scene load_steps=26 format=4 uid="uid://rl5jyjuad7dd"]
 
 [ext_resource type="TileSet" uid="uid://0rwjsil1qg8" path="res://forest tile set.tres" id="1_k1hqp"]
 [ext_resource type="Script" path="res://breakout.gd" id="1_soqjy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c1njtvigjeo6m" path="res://tiles/2D Dungeon Asset Pack_v5.2/character and tileset/Dungeon_Enemy_v2.png" id="4_ubet2"]
 [ext_resource type="Texture2D" uid="uid://gmus8ufp6pma" path="res://sprites/ball/ball.png" id="5_vke4q"]
 [ext_resource type="SpriteFrames" uid="uid://c4vut4hsf32en" path="res://sprites/paddle/paddle.tres" id="6_6psot"]
+[ext_resource type="Theme" uid="uid://b35fwn6f6n25j" path="res://hud_theme.tres" id="8_0uf2a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye2sq"]
 texture = ExtResource("2_xaqyj")
@@ -296,13 +297,7 @@ radius = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l5x1"]
 size = Vector2(600, 720)
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Root" type="Node2D"]
 script = ExtResource("1_soqjy")
 
 [node name="Game" type="Node2D" parent="."]
@@ -322,6 +317,7 @@ collision_enabled = false
 navigation_enabled = false
 
 [node name="Foreground" type="Node2D" parent="Game"]
+visible = false
 
 [node name="Bricks" type="TileMapLayer" parent="Game/Foreground"]
 texture_filter = 5
@@ -337,7 +333,7 @@ collision_layer = 3
 
 [node name="PaddleSprite" type="AnimatedSprite2D" parent="Game/Foreground/Paddle"]
 sprite_frames = ExtResource("6_6psot")
-frame_progress = 0.432999
+frame_progress = 0.454998
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Paddle"]
 rotation = 1.5708
@@ -352,7 +348,7 @@ collision_priority = 2.0
 
 [node name="BallSprite" type="AnimatedSprite2D" parent="Game/Foreground/Ball"]
 sprite_frames = SubResource("SpriteFrames_w76ja")
-frame_progress = 0.275412
+frame_progress = 0.329696
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Foreground/Ball"]
 shape = SubResource("CircleShape2D_7eyox")
@@ -414,11 +410,45 @@ shape = SubResource("RectangleShape2D_5l5x1")
 [node name="BallSpawnPoint" type="Marker2D" parent="Game/Foreground"]
 position = Vector2(380, 470)
 
-[node name="HUD" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="LevelLabel" type="Label" parent="HUD"]
+offset_left = 819.0
+offset_top = 94.0
+offset_right = 864.0
+offset_bottom = 117.0
+theme = ExtResource("8_0uf2a")
+theme_override_font_sizes/font_size = 24
+text = "Level:"
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelCount" type="Label" parent="HUD"]
+offset_left = 903.0
+offset_top = 122.0
+offset_right = 943.0
+offset_bottom = 150.0
+theme = ExtResource("8_0uf2a")
+theme_override_font_sizes/font_size = 24
+text = "2"
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathLabel" type="Label" parent="HUD"]
+offset_left = 819.0
+offset_top = 155.0
+offset_right = 878.0
+offset_bottom = 178.0
+theme = ExtResource("8_0uf2a")
+theme_override_font_sizes/font_size = 24
+text = "Deaths:"
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathCount" type="Label" parent="HUD"]
+offset_left = 903.0
+offset_top = 191.0
+offset_right = 943.0
+offset_bottom = 219.0
+theme = ExtResource("8_0uf2a")
+theme_override_font_sizes/font_size = 24
+text = "3"
+metadata/_edit_use_anchors_ = true

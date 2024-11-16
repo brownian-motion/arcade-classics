@@ -20,6 +20,8 @@ const BOTTOM_VALID_ROW = 12
 const LEFT_VALID_COL = 2
 const RIGHT_VALID_COL = 19
 
+var VALID_FLOWERS = [Vector2i(8,6), Vector2i(9,6), Vector2i(10,6), Vector2i(10,5)]
+
 const BLOCK_SIZE = 48 # px
 const BASE_SNAKE_SPEED = 2*BLOCK_SIZE # px/s
 const SPEED_PER_LENGTH = BASE_SNAKE_SPEED/3 # px/s
@@ -80,7 +82,7 @@ func make_follower() -> Node2D:
 
 func _unhandled_input(event: InputEvent) -> void:
 	var new_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down", .1)
-	if new_dir.length() >= 0.5:
+	if new_dir.length() > 0:
 		direction = get_head_target_vel(new_dir)
 	if event.is_action_released("pause_toggle"):
 		print("pausing")
@@ -170,11 +172,12 @@ func move_snake_head_square(delta: float) -> void:
 			kill_snake()
 			return
 		if food == collider:
-			var food_rc: Vector2i = food.local_to_map(food.to_local(collision.get_position()))
+			var food_cell: Vector2i = food.local_to_map(food.to_local(collision.get_position()))
 			# todo: plant flower
-			food.erase_cell(food_rc)
+			food.erase_cell(food_cell)
 			grow_snake()
 			generate_food()
+			plant_flower(food_cell)
 			return
 
 func grow_snake() -> void:
@@ -228,4 +231,52 @@ func get_head_target_vel(input_dir: Vector2) -> Vector2i:
 	var center_of_head_tile_coord = center_of_tile(head_tile)
 	var target_cell = global_to_tile(head.position + intended_direction_offset)
 	return target_cell - head_tile
+	
+func plant_flower(cell_coord: Vector2i) -> void:
+	var atlas_coord = VALID_FLOWERS[randi() % VALID_FLOWERS.size()]
+	flowers.set_cell(cell_coord, 0, atlas_coord)
+	update_grass(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_LEFT_SIDE))
+	update_grass(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_RIGHT_SIDE))
+	update_grass(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_TOP_SIDE))
+	update_grass(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+
+func update_grass(cell_coord: Vector2i) -> void:
+	if cell_coord.y < TOP_VALID_ROW || cell_coord.y > BOTTOM_VALID_ROW || cell_coord.x < LEFT_VALID_COL || cell_coord.x > RIGHT_VALID_COL:
+		return
+	var needs_above = (cell_coord.y == TOP_VALID_ROW) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_TOP_SIDE))
+	var needs_left = (cell_coord.x == LEFT_VALID_COL) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_LEFT_SIDE))
+	var needs_right = (cell_coord.y == BOTTOM_VALID_ROW) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	var needs_below = (cell_coord.x == RIGHT_VALID_COL) || has_flower(flowers.get_neighbor_cell(cell_coord, TileSet.CELL_NEIGHBOR_RIGHT_SIDE))
+	
+	var idx = (8 if needs_left else 0) + (4 if needs_above else 0) + (2 if needs_right else 0) + (1 if needs_below else 0)
+	
+	const GRASSES = [
+		Vector2i(1,1), # empty,
+		Vector2i(2,3), # just below
+		Vector2i(3,2), # just right
+		Vector2i(3,3), # right and below
+		
+		Vector2i(2,0), # just above
+		Vector2i(3,0), # above and right
+		Vector2i(4,2), # above and below
+		Vector2i(3,0), # above and right and below
+		
+		Vector2i(0,1), # just left,
+		Vector2i(3,0), # left and just below
+		Vector2i(5,2), # left and right
+		Vector2i(1,3), # left and right and below
+		
+		Vector2i(0,0), # left and above
+		Vector2i(0,3), # left and above and right
+		Vector2i(0,0), # left and above and below
+		Vector2i(1,5), # full
+		Vector2i.ZERO
+	];
+	var atlas_coords = GRASSES[idx]
+	flowers.set_cell(cell_coord, 0, atlas_coords)
+	
+	
+func has_flower(cell_coord: Vector2i) -> bool:
+	var atlas_coords = flowers.get_cell_atlas_coords(cell_coord)
+	return VALID_FLOWERS.has(atlas_coords)
 	

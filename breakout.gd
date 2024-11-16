@@ -72,6 +72,11 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event) -> void:
 	paddle.velocity.x = BASE_PADDLE_VELOCITY * (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))
+	if event.is_action_released("pause_toggle"):
+		print("pausing")
+		$PauseModal.show_menu()
+		get_tree().paused = true
+		get_viewport().set_input_as_handled()
 	
 func kick_ball() -> void:
 	print("kick")

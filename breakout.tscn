@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://rl5jyjuad7dd"]
+[gd_scene load_steps=28 format=4 uid="uid://rl5jyjuad7dd"]
 
 [ext_resource type="TileSet" uid="uid://0rwjsil1qg8" path="res://forest tile set.tres" id="1_k1hqp"]
 [ext_resource type="Script" path="res://breakout.gd" id="1_soqjy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://gmus8ufp6pma" path="res://sprites/ball/ball.png" id="5_vke4q"]
 [ext_resource type="SpriteFrames" uid="uid://c4vut4hsf32en" path="res://sprites/paddle/paddle.tres" id="6_6psot"]
 [ext_resource type="Theme" uid="uid://b35fwn6f6n25j" path="res://hud_theme.tres" id="8_0uf2a"]
+[ext_resource type="PackedScene" uid="uid://bq4rnmqxp5eim" path="res://default_pause_menu.tscn" id="9_6h4te"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye2sq"]
 texture = ExtResource("2_xaqyj")
@@ -304,6 +305,7 @@ size = Vector2(600, 720)
 script = ExtResource("1_soqjy")
 
 [node name="Game" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="Background" type="Node2D" parent="Game"]
 
@@ -460,3 +462,8 @@ scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_ddbog")
 collision_enabled = false
 navigation_enabled = false
+
+[node name="PauseModal" parent="." instance=ExtResource("9_6h4te")]
+visible = false
+size_flags_horizontal = 3
+size_flags_vertical = 3

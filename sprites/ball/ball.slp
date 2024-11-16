@@ -1,0 +1,60 @@
+{
+    "project": {
+        "animationPlayback": {
+            "fps": 4,
+            "frameCount": 4,
+            "frameHeight": 48,
+            "frameWidth": 48,
+            "frameX": 0,
+            "frameY": 0,
+            "loop": true,
+            "scale": 1
+        },
+        "autoExportEnabled": true,
+        "creationVersion": "0.9.0",
+        "currentLayerIndex": 0,
+        "guides": [
+        ],
+        "hasUsedAnimation": true,
+        "layers": [
+            {
+                "imageData": "iVBORw0KGgoAAAANSUhEUgAAASAAAAAwCAYAAACxIqevAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAElUlEQVR4nO3dzU0cQRCG4WYDQAhxgIsT8MUhOATLgVoOwSH44gR8gQNCiATsUyEYtrerp/6+6q33CLuojOFR1wzavWjVu37e3v4bPebbw8OFxyxV5d3v6+vhz/+Xpye1n3+1L/Tn6mo4+OfnZ8hfXA46vQoj/X7c3Q3/P77f38N+339dXg7n//ryAjM/B51eUoxET+ag0ysaIwk6vRAw+ntzM/x3fXp8DJ9zGwedXggYcdDpFYGRBJ1eezCafoIEnV7eGFngQ0UgxEGnVyRGEnR6eWIkQaeXB0YW+FCzCE092AIfygMhS3i2WUMkQaeXJ0YW+FAeCFngQ1khZAnPNi5ErAdZwrPNCiJPfCgrhCzwoawRsoRnmwVElvBs04TIEx+Kg9DwAZ74UNoIReBDaSJkCc82C4g88aE0EfLEh9JAKAIfaoTQyU9G4ENpIRSJD6WBkCc+lCZCEfhQGghF4ENJEIrEhzqFUPcTkfhQUoQQ8KEkCEXgQ2kgFIkPJUEoEh9qD0II+FA9hI5+EAEfai9CSPhQexCKxIeSIISAD7UHIQR8qBmEkPChjiF02H4ACZ/W8ObxDAGf1vbPgYRPa/PzIOHTGt48Gn0AaIUQTz+tzc2Fgg+FNk/VD/H009rxud4BhHramJkLFR8KfT6t0E4/FHcu1NPGaC5UfKjtfK8AoeJDoc+nGeppgzsXKj7UaD5UfCj0+WZacgXLHCo+FPp8Va6WAijLepNlzipX6OsX9XbOQ2t51pssc55z6OsX1Zszy3qTZc5RS52AspdlvckyZ4XfMgBlW2uyzVthl2X9omjeQ7a1Jtu851SW9Yvazpttrck277GWOQFlL9tak23eCrMCqKqqsAqgqqrCKoCqqgqrAKqqKqwCqKqqsAqgqqrCWgYghDcFnCnbvBV2mm+X7BHNe4h+h9LZss17TiG8Q+lM23mR3i6ZU7Z5j7XMCSh7iG+XfKps81aYLQVQlrUmy5xVrrKsYW/nPLSWZ63JMuc5l2UN682ZZa3JMueopU5A2cuy1mSZs8JvOYDQ1xv0+arcoa9h2/leAUJfb2bmQ/0lR51LO/Q1bDQf+nozmg8VoeEbE6IihDqXRejrDXc+VIS4c6EihDrX3pZbwSi008bMPKgIoc5VfQztFNSb5wNAaKcNyTwoCKHM4R3aKWh2HrTTxuw8KAidmqP7CYSXPtXCMPL1lyX4IL3qoOT0g/BSrRIMEV76VIJh5OtFjxA8+clIhLRPYhEIaZx8EBDSWL0iEdI4iUUipHESi0CIcwIbPiACIas10BMhzbUrEiHN6z4RCGmugREIaa6Bnghx1z/WgzwR8rgGZQmR1fWeCIQsLjp7ImRxDcoTIatrUJYQzV53mnqwJUTeF78tELK+2OyJkPUdL0uIPC5+W0LkcfHbAqE9F72nn2CBUPSdNwlGEXe4LCHyvNVugZDnnTcLhCLuvEkwkt5pEz1ZglE0Or04GCHcVrdAKPLvfCQYIdzul2CEdLufg5Hm7X21L8TBCBWd7EkwQvzjQg5GCOj04mCEhE5k9U1YLA5GiOhUVVVVlWv/AewtiUatDPGkAAAAAElFTkSuQmCC",
+                "name": "Layer 1",
+                "opacity": 1,
+                "visible": true
+            }
+        ],
+        "modificationVersion": "0.9.0",
+        "notes": [
+        ],
+        "swatch": {
+            "colours": [
+            ]
+        },
+        "uiState": {
+            "animationPanelExpanded": true,
+            "colourPanelExpanded": true,
+            "firstPane": {
+                "offsetX": 641,
+                "offsetY": 444,
+                "sceneCentered": false,
+                "size": 1,
+                "zoomLevel": 3
+            },
+            "lastFillToolUsed": "FillTool",
+            "layerListViewContentY": 0,
+            "layerPanelExpanded": true,
+            "mainSplitViewState": "gqJlaW5kZXgAbnByZWZlcnJlZFdpZHRo+0CKqqqqqqqromVpbmRleAFucHJlZmVycmVkV2lkdGj7QG4AAAAAAAA=",
+            "panelSplitViewState": "gqJlaW5kZXgBb3ByZWZlcnJlZEhlaWdodPtAbIAAAAAAAKJlaW5kZXgEb3ByZWZlcnJlZEhlaWdodPtAbGAAAAAAAA==",
+            "secondPane": {
+                "offsetX": -72,
+                "offsetY": 633,
+                "sceneCentered": true,
+                "size": 0,
+                "zoomLevel": 1
+            },
+            "swatchPanelExpanded": true
+        },
+        "usingAnimation": true
+    }
+}

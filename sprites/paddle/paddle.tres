@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://c4vut4hsf32en"]
+
+[ext_resource type="Texture2D" uid="uid://cr4hbbvi6b6r" path="res://sprites/paddle/paddle.png" id="1_ayd0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cynwl"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 0, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nif5o"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 48, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfojm"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 96, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b38x"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 0, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jrl1"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 48, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj3xe"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 96, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrd2u"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 144, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iacnk"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 192, 192, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8neiu"]
+atlas = ExtResource("1_ayd0u")
+region = Rect2(0, 240, 192, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cynwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nif5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfojm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b38x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jrl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj3xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrd2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iacnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8neiu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]

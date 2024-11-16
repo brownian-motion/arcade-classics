@@ -9,3 +9,8 @@ Everything in here is free to use for personal use, though not permitted to modi
 Take a look at the current state of the project:
 
 ![thumbnail video](https://github.com/brownian-motion/arcade-classics/raw/refs/heads/main/thumbnail.gif)
+
+<!--
+regenerate the thumbnail with this command:
+ffmpeg -i ./thumbnail.avi -vf "fps=10,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop -1 thumbnail.gif
+-->
